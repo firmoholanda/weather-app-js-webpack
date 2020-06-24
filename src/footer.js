@@ -1,18 +1,13 @@
-const hr = document.createElement('hr');
-hr.className = 'my-4';
+const footer =
 
-const footer = document.createElement('footer');
-footer.className = 'footer';
-
-const small = document.createElement('small');
-small.innerHTML = 'restaurant-js-webpack created by: ';
-
-const a = document.createElement('a');
-a.innerHTML = 'firmo holanda';
-a.setAttribute('href', 'https://github.com/firmoholanda');
-
-footer.appendChild(hr);
-footer.appendChild(small);
-small.appendChild(a);
+  `
+  <footer class="footer">
+    <hr>
+    <small>
+      weather-app-js-webpack created by:
+      <a href="https://github.com/firmoholanda">firmo holanda</a> 
+    </small>
+  </footer>
+  `
 
 export default footer;
