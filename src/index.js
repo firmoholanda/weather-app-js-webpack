@@ -1,12 +1,12 @@
 // import stylesheets
-import './css/style.css';
+import './view/css/style.css';
 
 // import modules
-import navbar from './navbar';
-import footer from './footer';
-import home from './tab/home';
-import contact from './tab/contact';
-import about from './tab/about';
+import navbar from './view/navbar';
+import footer from './view/footer';
+import home from './view/tabs/home';
+import contact from './view/tabs/contact';
+import about from './view/tabs/about';
 
 
 const main = document.querySelector('#content');
