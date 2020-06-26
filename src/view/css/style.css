@@ -23,3 +23,6 @@ footer small {
 
 
 /* weather card */
+.card-img {
+  width: auto;
+}

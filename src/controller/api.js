@@ -8,9 +8,10 @@ const getWeatherData = async (location, unit) => {
     const weatherData = await response.json();
     responseData = {
       city: `${weatherData.city.name}, ${weatherData.city.country}`,
-      temperature: Math.round(weatherData.list[0].main.temp),
+      temperature: (weatherData.list[0].main.temp).toFixed(1),
       weatherDescription: weatherData.list[0].weather[0].description,
       weatherIcon: weatherData.list[0].weather[0].icon,
+      pressure: weatherData.list[0].main.pressure,
       humidity: weatherData.list[0].main.humidity,
       wind: weatherData.list[0].wind.speed,
     };
