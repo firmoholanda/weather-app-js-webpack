@@ -21,6 +21,13 @@ footer small {
   float: right;
 }
 
+footer a {
+  color: gray;
+}
+
+footer a:hover {
+  color: black;
+}
 
 /* weather card */
 .card-img {

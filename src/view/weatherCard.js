@@ -6,8 +6,8 @@ const weatherCard =
     <div class="card text-center shadow bg-white rounded">
       <div class="card-body">
         <h1 class="card-title" id="weatherDescription">###</h1>
-        <h5 class="card-text" id="city">###</h5>
-        <img class="card-img" src="..." alt="card image" id="weatherIcon">
+        <h4 class="card-text" id="city">###</h4>
+        <img class="card-img" src="..." alt=" " id="weatherIcon">
         <h1 class="card-text" id="temperature">###</h1>
         <br>
         <table class="table table-sm table-striped table-bordered table-condensed" id="weather-widget-table">

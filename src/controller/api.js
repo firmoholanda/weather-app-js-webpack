@@ -16,8 +16,8 @@ const getWeatherData = async (location, unit) => {
       wind: weatherData.list[0].wind.speed,
     };
   } catch (err) {
-    //alert(err);
-    console.log(err);
+    alert(err);
+    //console.log(err);
   }
   return responseData;
 };
