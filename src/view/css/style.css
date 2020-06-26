@@ -1,4 +1,4 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+  @import "~bootstrap/dist/css/bootstrap.css";
 
 /* universal */
 html,
@@ -19,4 +19,17 @@ footer {
 
 footer small {
   float: right;
+}
+
+footer a {
+  color: gray;
+}
+
+footer a:hover {
+  color: black;
+}
+
+/* weather card */
+.card-img {
+  width: auto;
 }

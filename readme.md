@@ -23,7 +23,7 @@ this project can be found in https://github.com/firmoholanda/weather-app-js-webp
 ### ✨ [live version](https://raw.githack.com/firmoholanda/weather-app-js-webpack/release/dist/index.html#)
 
 <a href="https://firmoholanda.github.io/" target="_blank">
-    <img alt="app image" src="https://github.com/firmoholanda/weather-app-js-webpack/blob/release/dist/public/animation.gif"/>
+    <img alt="app image" src="https://github.com/firmoholanda/weather-app-js-webpack/blob/feature02-api/src/view/public/appScreenshot.png"/>
 </a>
 
 
