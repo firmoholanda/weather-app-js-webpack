@@ -20,7 +20,7 @@ bootstrap, jquery, webpacker and git was used on this project.
 this project can be found in https://github.com/firmoholanda/weather-app-js-webpack
 
 
-### ✨ [live version]https://raw.githack.com/firmoholanda/weather-app-js-webpack/release/dist/index.html)
+### ✨ [live version](https://raw.githack.com/firmoholanda/weather-app-js-webpack/release/dist/index.html)
 
 <a href="https://raw.githack.com/firmoholanda/weather-app-js-webpack/release/dist/index.html" target="_blank">
     <img alt="app image" src="https://github.com/firmoholanda/weather-app-js-webpack/blob/feature02-api/src/view/public/appScreenshot.png"/>
