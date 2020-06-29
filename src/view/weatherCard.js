@@ -28,8 +28,8 @@ const weatherCard =
         </table>
       </div>
         <div class="custom-control custom-switch text-right pr-4 pb-2">
-          <input type="checkbox" class="custom-control-input" id="customSwitch1">
-          <label class="custom-control-label" for="customSwitch1">°C / °F</label>
+          <input type="checkbox" class="custom-control-input" id="switchMetric">
+          <label class="custom-control-label" for="switchMetric">°C / °F</label>
         </div>
       <small class="card-footer text-muted text-right" id="updatedAt">###</small>
     </div>

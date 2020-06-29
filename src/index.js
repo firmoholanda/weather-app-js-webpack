@@ -18,6 +18,8 @@ main.insertAdjacentHTML('beforeEnd', weatherCard);
 main.insertAdjacentHTML('beforeEnd', footer);
 
 // get html elements
+const searchImput = document.getElementById('searchImput');
+const searchBtn = document.getElementById('searchBtn');
 const cityElement = document.getElementById('city');
 const temperatureElement = document.getElementById('temperature');
 const weatherIconElement = document.getElementById('weatherIcon');
@@ -26,42 +28,46 @@ const pressureElement = document.getElementById('pressure');
 const humidityElement = document.getElementById('humidity');
 const windElement = document.getElementById('wind');
 const updatedAtElement = document.getElementById('updatedAt');
+const switchMetricElement = document.getElementById('switchMetric');
 
 
 // weatherData promise
-const myWeatherData = getWeatherData('sao paulo', 'metric');
+function loadDataToPage(city) {
+  var selectedMetric, tempMetric, windMetric;
 
-myWeatherData.then(response => {
-  cityElement.innerHTML = response.city.toLowerCase();
-  temperatureElement.innerHTML = response.temperature + " °C"
-  weatherIconElement.src = "http://openweathermap.org/img/wn/" + response.weatherIcon + "@2x.png"
-  weatherDescriptionElement.innerHTML = response.weatherDescription
-  pressureElement.innerHTML = response.pressure
-  humidityElement.innerHTML = response.humidity + "%"
-  windElement.innerHTML = response.wind + " m/s"
-  updatedAtElement.innerHTML = new Date().toString().toLowerCase();
-});
+  if (switchMetricElement.checked) {
+    selectedMetric = 'imperial';
+    tempMetric = " °F";
+    windMetric = " mi/h";
+  } else {
+    selectedMetric = 'metric';
+    tempMetric = " °C";
+    windMetric = " m/s";
+  }
 
-
-
-const searchImput = document.getElementById('searchImput');
-const searchBtn = document.getElementById('searchBtn');
-
-searchBtn.onclick = () => {
-
-  //alert("test")
-
-  const myWeatherData = getWeatherData(searchImput.value, 'metric');
+  const myWeatherData = getWeatherData(city, selectedMetric);
 
   myWeatherData.then(response => {
     cityElement.innerHTML = response.city.toLowerCase();
-    temperatureElement.innerHTML = response.temperature + " °C"
+    temperatureElement.innerHTML = response.temperature + tempMetric
     weatherIconElement.src = "http://openweathermap.org/img/wn/" + response.weatherIcon + "@2x.png"
     weatherDescriptionElement.innerHTML = response.weatherDescription
-    pressureElement.innerHTML = response.pressure
+    pressureElement.innerHTML = response.pressure + " hpa"
     humidityElement.innerHTML = response.humidity + "%"
-    windElement.innerHTML = response.wind + " m/s"
+    windElement.innerHTML = response.wind + windMetric
     updatedAtElement.innerHTML = new Date().toString().toLowerCase();
   });
-
 };
+
+//loadDataToPage by default
+loadDataToPage('sao paulo');
+
+//loadDataToPage when searched
+searchBtn.onclick = () => {
+  loadDataToPage(searchImput.value);
+};
+
+//loadDataToPage when metric switch is clicked
+switchMetricElement.onclick = () => {
+  searchImput.value ? loadDataToPage(searchImput.value) : loadDataToPage('sao paulo');
+}
