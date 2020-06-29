@@ -7,7 +7,7 @@ const weatherCard =
       <div class="card-body">
         <h1 class="card-title" id="weatherDescription">###</h1>
         <h4 class="card-text" id="city">###</h4>
-        <img class="card-img" src="..." alt=" " id="weatherIcon">
+        <img class="card-img" src="" alt=" " id="weatherIcon">
         <h1 class="card-text" id="temperature">###</h1>
         <br>
         <table class="table table-sm table-striped table-bordered table-condensed" id="weather-widget-table">
@@ -26,8 +26,11 @@ const weatherCard =
             </tr>
           </tbody>
         </table>
-
       </div>
+        <div class="custom-control custom-switch text-right pr-4 pb-2">
+          <input type="checkbox" class="custom-control-input" id="switchMetric">
+          <label class="custom-control-label" for="switchMetric">°C / °F</label>
+        </div>
       <small class="card-footer text-muted text-right" id="updatedAt">###</small>
     </div>
   </div>
