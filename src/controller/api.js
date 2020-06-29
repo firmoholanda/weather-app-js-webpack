@@ -1,9 +1,10 @@
-const apiKey = '31a4bf410e7c22de98a5243e4df72170';
+// import config
+import { config } from '../config';
 
 const getWeatherData = async (location, unit) => {
   let responseData = {};
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${unit}&APPID=${apiKey}`,
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${unit}&APPID=${config.API_KEY}`,
       { mode: 'cors' });
     const weatherData = await response.json();
     responseData = {
@@ -17,7 +18,6 @@ const getWeatherData = async (location, unit) => {
     };
   } catch (err) {
     alert(err);
-    //console.log(err);
   }
   return responseData;
 };

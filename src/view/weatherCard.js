@@ -7,7 +7,7 @@ const weatherCard =
       <div class="card-body">
         <h1 class="card-title" id="weatherDescription">###</h1>
         <h4 class="card-text" id="city">###</h4>
-        <img class="card-img" src="..." alt=" " id="weatherIcon">
+        <img class="card-img" src="" alt=" " id="weatherIcon">
         <h1 class="card-text" id="temperature">###</h1>
         <br>
         <table class="table table-sm table-striped table-bordered table-condensed" id="weather-widget-table">
