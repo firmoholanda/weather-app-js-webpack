@@ -2,7 +2,6 @@
 import './view/css/style.css';
 
 // import app api
-import { functionsIn } from 'lodash';
 import { getWeatherData } from './controller/api';
 
 // import html modules
