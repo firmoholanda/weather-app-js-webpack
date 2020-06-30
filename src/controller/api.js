@@ -1,11 +1,15 @@
 // import config
 import { config } from '../config';
 
-const getWeatherData = async (location, unit) => {
+const getWeatherData = async (latitude, longitude, city, unit) => {
   let responseData = {};
   try {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=${unit}&APPID=${config.API_KEY}`,
-      { mode: 'cors' });
+    var response;
+    if (city == null) {
+      response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${unit}&APPID=${config.API_KEY}`, { mode: 'cors' });
+    } else {
+      response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&APPID=${config.API_KEY}`, { mode: 'cors' });
+    }
     const weatherData = await response.json();
     responseData = {
       city: `${weatherData.city.name}, ${weatherData.city.country}`,
@@ -17,7 +21,7 @@ const getWeatherData = async (location, unit) => {
       wind: weatherData.list[0].wind.speed,
     };
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
   return responseData;
 };

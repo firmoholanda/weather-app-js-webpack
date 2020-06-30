@@ -9,6 +9,7 @@ import jumbotron from './view/jumbotron';
 import search from './view/search';
 import weatherCard from './view/weatherCard';
 import footer from './view/footer';
+import { functionsIn } from 'lodash';
 
 // assemble index
 const main = document.querySelector('#content');
@@ -32,7 +33,7 @@ const switchMetricElement = document.getElementById('switchMetric');
 
 
 // weatherData promise
-function loadDataToPage(city) {
+function loadDataToPage(latitude, longitude, city) {
   var selectedMetric, tempMetric, windMetric;
 
   if (switchMetricElement.checked) {
@@ -45,7 +46,7 @@ function loadDataToPage(city) {
     windMetric = " m/s";
   }
 
-  const myWeatherData = getWeatherData(city, selectedMetric);
+  const myWeatherData = getWeatherData(latitude, longitude, city, selectedMetric);
 
   myWeatherData.then(response => {
     cityElement.innerHTML = response.city.toLowerCase();
@@ -59,15 +60,22 @@ function loadDataToPage(city) {
   });
 };
 
-//loadDataToPage by default
-loadDataToPage('sao paulo');
+// get information from current city
+function loadDataFromCurrentCity() {
+  navigator.geolocation.getCurrentPosition(position => {
+    loadDataToPage(position.coords.latitude, position.coords.longitude, undefined);
+  });
+}
 
-//loadDataToPage when searched
+// loadDataToPage by default
+loadDataFromCurrentCity();
+
+// loadDataToPage when searched
 searchBtn.onclick = () => {
-  loadDataToPage(searchImput.value);
+  loadDataToPage(undefined, undefined, searchImput.value);
 };
 
-//loadDataToPage when metric switch is clicked
+// loadDataToPage when metric switch is clicked
 switchMetricElement.onclick = () => {
-  searchImput.value ? loadDataToPage(searchImput.value) : loadDataToPage('sao paulo');
+  searchImput.value ? loadDataToPage(undefined, undefined, searchImput.value) : loadDataFromCurrentCity();
 }
