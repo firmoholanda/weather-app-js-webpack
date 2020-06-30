@@ -4,7 +4,7 @@ import { config } from '../config';
 const getWeatherData = async (latitude, longitude, city, unit) => {
   let responseData = {};
   try {
-    var response;
+    let response;
     if (city == null) {
       response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${unit}&APPID=${config.API_KEY}`, { mode: 'cors' });
     } else {
