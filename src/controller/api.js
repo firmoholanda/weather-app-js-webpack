@@ -7,7 +7,7 @@ const getWeatherData = async (latitude, longitude, city, unit) => {
     if (city == null) {
       response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${unit}&APPID=${apiKey}`, { mode: 'cors' });
     } else {
-      response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&APPID=${config.API_KEY}`, { mode: 'cors' });
+      response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&APPID=${apiKey}`, { mode: 'cors' });
     }
     const weatherData = await response.json();
     responseData = {
@@ -20,7 +20,7 @@ const getWeatherData = async (latitude, longitude, city, unit) => {
       wind: weatherData.list[0].wind.speed,
     };
   } catch (err) {
-    console.log(err);
+    alert(err);
   }
   return responseData;
 };
