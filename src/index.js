@@ -2,7 +2,7 @@
 import './view/css/style.css';
 
 // import app api
-import { getWeatherData } from './controller/api';
+import getWeatherData from './controller/api';
 
 // import html modules
 import jumbotron from './view/jumbotron';
@@ -61,14 +61,14 @@ function loadDataToPage(latitude, longitude, city) {
 }
 
 // get information from current city
-function loadDataFromCurrentCity() {
+function getLocalWeather() {
   navigator.geolocation.getCurrentPosition(position => {
     loadDataToPage(position.coords.latitude, position.coords.longitude, undefined);
   });
 }
 
 // loadDataToPage by default
-loadDataFromCurrentCity();
+getLocalWeather();
 
 // loadDataToPage when searched
 searchBtn.onclick = () => {
@@ -77,5 +77,9 @@ searchBtn.onclick = () => {
 
 // loadDataToPage when metric switch is clicked
 switchMetricElement.onclick = () => {
-  searchImput.value ? loadDataToPage(undefined, undefined, searchImput.value) : loadDataFromCurrentCity();
+  if (searchImput.value) {
+    loadDataToPage(undefined, undefined, searchImput.value);
+  } else {
+    getLocalWeather();
+  }
 };

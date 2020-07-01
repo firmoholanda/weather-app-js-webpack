@@ -1,5 +1,5 @@
 // import config
-import { config } from '../config';
+import config from '../config';
 
 const getWeatherData = async (latitude, longitude, city, unit) => {
   let responseData = {};
@@ -26,4 +26,4 @@ const getWeatherData = async (latitude, longitude, city, unit) => {
   return responseData;
 };
 
-export { getWeatherData };
+export default getWeatherData;
