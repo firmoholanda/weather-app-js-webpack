@@ -2,14 +2,13 @@
 import './view/css/style.css';
 
 // import app api
-import { getWeatherData } from './controller/api';
+import getWeatherData from './controller/api';
 
 // import html modules
 import jumbotron from './view/jumbotron';
 import search from './view/search';
 import weatherCard from './view/weatherCard';
 import footer from './view/footer';
-import { functionsIn } from 'lodash';
 
 // assemble index
 const main = document.querySelector('#content');
@@ -34,41 +33,42 @@ const switchMetricElement = document.getElementById('switchMetric');
 
 // weatherData promise
 function loadDataToPage(latitude, longitude, city) {
-  var selectedMetric, tempMetric, windMetric;
+  let selectedMetric; let tempMetric; let
+    windMetric;
 
   if (switchMetricElement.checked) {
     selectedMetric = 'imperial';
-    tempMetric = " °F";
-    windMetric = " mi/h";
+    tempMetric = ' °F';
+    windMetric = ' mi/h';
   } else {
     selectedMetric = 'metric';
-    tempMetric = " °C";
-    windMetric = " m/s";
+    tempMetric = ' °C';
+    windMetric = ' m/s';
   }
 
   const myWeatherData = getWeatherData(latitude, longitude, city, selectedMetric);
 
   myWeatherData.then(response => {
     cityElement.innerHTML = response.city.toLowerCase();
-    temperatureElement.innerHTML = response.temperature + tempMetric
-    weatherIconElement.src = "http://openweathermap.org/img/wn/" + response.weatherIcon + "@2x.png"
-    weatherDescriptionElement.innerHTML = response.weatherDescription
-    pressureElement.innerHTML = response.pressure + " hpa"
-    humidityElement.innerHTML = response.humidity + "%"
-    windElement.innerHTML = response.wind + windMetric
+    temperatureElement.innerHTML = response.temperature + tempMetric;
+    weatherIconElement.src = `http://openweathermap.org/img/wn/${response.weatherIcon}@2x.png`;
+    weatherDescriptionElement.innerHTML = response.weatherDescription;
+    pressureElement.innerHTML = `${response.pressure} hpa`;
+    humidityElement.innerHTML = `${response.humidity}%`;
+    windElement.innerHTML = response.wind + windMetric;
     updatedAtElement.innerHTML = new Date().toString().toLowerCase();
   });
-};
+}
 
 // get information from current city
-function loadDataFromCurrentCity() {
+function getLocalWeather() {
   navigator.geolocation.getCurrentPosition(position => {
     loadDataToPage(position.coords.latitude, position.coords.longitude, undefined);
   });
 }
 
 // loadDataToPage by default
-loadDataFromCurrentCity();
+getLocalWeather();
 
 // loadDataToPage when searched
 searchBtn.onclick = () => {
@@ -77,5 +77,9 @@ searchBtn.onclick = () => {
 
 // loadDataToPage when metric switch is clicked
 switchMetricElement.onclick = () => {
-  searchImput.value ? loadDataToPage(undefined, undefined, searchImput.value) : loadDataFromCurrentCity();
-}
+  if (searchImput.value) {
+    loadDataToPage(undefined, undefined, searchImput.value);
+  } else {
+    getLocalWeather();
+  }
+};

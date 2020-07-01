@@ -1,5 +1,4 @@
 const path = require('path');
-require('dotenv').config();
 
 module.exports = {
   mode: 'production',
@@ -25,5 +24,5 @@ module.exports = {
       },
     ],
   },
-  performance: { hints: false }
+  performance: { hints: false },
 };

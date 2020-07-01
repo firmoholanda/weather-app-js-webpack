@@ -1,6 +1,4 @@
-const search =
-
-`
+const search = `
 <div class="row py-4 d-flex justify-content-center">
   <div class="input-group col-md-4 ">
     <input class="form-control py-2" type="search" placeholder="search your city" id="searchImput">
@@ -11,6 +9,6 @@ const search =
     </span>
   </div>
 </div>
-`
+`;
 
 export default search;

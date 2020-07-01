@@ -1,6 +1,4 @@
-const footer =
-
-  `
+const footer = `
   <footer class="footer">
     <hr>
     <small>
@@ -8,6 +6,6 @@ const footer =
       <a href="https://github.com/firmoholanda">firmo holanda</a> 
     </small>
   </footer>
-  `
+  `;
 
 export default footer;

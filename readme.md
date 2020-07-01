@@ -7,11 +7,10 @@ weather-app-js-webpack
 ## 📡 technologies used
 
 - bootstrap
-- jquery
-- webpacker
+- webpack
 - git
 
-bootstrap, jquery, webpacker and git was used on this project.
+bootstrap, webpack and git was used on this project.
 
 
 

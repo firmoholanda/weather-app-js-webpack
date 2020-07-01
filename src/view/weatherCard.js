@@ -1,6 +1,4 @@
-const weatherCard =
-
-`
+const weatherCard = `
 <div class="row py-4 d-flex justify-content-center">
   <div class="col-md-6">
     <div class="card text-center shadow bg-white rounded">
@@ -36,6 +34,6 @@ const weatherCard =
   </div>
 </div>
 
-`
+`;
 
 export default weatherCard;
