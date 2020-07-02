@@ -1,15 +1,14 @@
 // import stylesheets
 import './view/css/style.css';
 
-// import app api
-import getWeatherData from './controller/api';
-
 // import html modules
 import error from './view/error';
 import jumbotron from './view/jumbotron';
 import search from './view/search';
 import weatherCard from './view/weatherCard';
 import footer from './view/footer';
+
+const apiKey = '31a4bf410e7c22de98a5243e4df72170';
 
 // assemble index
 const main = document.querySelector('#content');
@@ -36,13 +35,36 @@ const switchMetricElement = document.getElementById('switchMetric');
 // display erro messages
 const displayError = (err) => {
   displayErrorElement.innerHTML = err;
-  displayErrorElement.style.display = "block";
-  setTimeout(() => displayErrorElement.style.display = "none", 3000);
-  searchImput.value = "";
-  //location.reload();
+  displayErrorElement.style.display = 'block';
+  setTimeout(() => { displayErrorElement.style.display = 'none'; }, 3000);
+  searchImput.value = '';
 };
-export default displayError;
 
+// call api
+const getWeatherData = async (latitude, longitude, city, unit) => {
+  let responseData = {};
+  try {
+    let response;
+    if (city == null) {
+      response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${unit}&APPID=${apiKey}`, { mode: 'cors' });
+    } else {
+      response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${unit}&APPID=${apiKey}`, { mode: 'cors' });
+    }
+    const weatherData = await response.json();
+    responseData = {
+      city: `${weatherData.city.name}, ${weatherData.city.country}`,
+      temperature: (weatherData.list[0].main.temp).toFixed(1),
+      weatherDescription: weatherData.list[0].weather[0].description,
+      weatherIcon: weatherData.list[0].weather[0].icon,
+      pressure: weatherData.list[0].main.pressure,
+      humidity: weatherData.list[0].main.humidity,
+      wind: weatherData.list[0].wind.speed,
+    };
+  } catch (err) {
+    displayError('invalid city name. please try again.');
+  }
+  return responseData;
+};
 
 // weatherData promise
 function loadDataToPage(latitude, longitude, city) {
