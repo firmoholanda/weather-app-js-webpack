@@ -7,6 +7,11 @@ body {
   overflow-x: hidden;
 }
 
+.displayError {
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+
 /* imges */
 img {
   object-fit: cover;

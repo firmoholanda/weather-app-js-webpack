@@ -1,3 +1,5 @@
+import displayError from '../index';
+
 const apiKey = '31a4bf410e7c22de98a5243e4df72170';
 
 const getWeatherData = async (latitude, longitude, city, unit) => {
@@ -20,7 +22,7 @@ const getWeatherData = async (latitude, longitude, city, unit) => {
       wind: weatherData.list[0].wind.speed,
     };
   } catch (err) {
-    alert(err);
+    displayError("invalid city name. please try again.");
   }
   return responseData;
 };

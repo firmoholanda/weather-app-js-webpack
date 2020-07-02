@@ -5,6 +5,7 @@ import './view/css/style.css';
 import getWeatherData from './controller/api';
 
 // import html modules
+import error from './view/error';
 import jumbotron from './view/jumbotron';
 import search from './view/search';
 import weatherCard from './view/weatherCard';
@@ -12,12 +13,14 @@ import footer from './view/footer';
 
 // assemble index
 const main = document.querySelector('#content');
+main.insertAdjacentHTML('beforeEnd', error);
 main.insertAdjacentHTML('beforeEnd', jumbotron);
 main.insertAdjacentHTML('beforeEnd', search);
 main.insertAdjacentHTML('beforeEnd', weatherCard);
 main.insertAdjacentHTML('beforeEnd', footer);
 
 // get html elements
+const displayErrorElement = document.getElementById('displayError');
 const searchImput = document.getElementById('searchImput');
 const searchBtn = document.getElementById('searchBtn');
 const cityElement = document.getElementById('city');
@@ -29,6 +32,16 @@ const humidityElement = document.getElementById('humidity');
 const windElement = document.getElementById('wind');
 const updatedAtElement = document.getElementById('updatedAt');
 const switchMetricElement = document.getElementById('switchMetric');
+
+// display erro messages
+const displayError = (err) => {
+  displayErrorElement.innerHTML = err;
+  displayErrorElement.style.display = "block";
+  setTimeout(() => displayErrorElement.style.display = "none", 3000);
+  searchImput.value = "";
+  //location.reload();
+};
+export default displayError;
 
 
 // weatherData promise
