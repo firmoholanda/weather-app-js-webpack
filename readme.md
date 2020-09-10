@@ -1,6 +1,6 @@
 # 📃 weather-app-js-webpack
 
-weather-app-js-webpack
+a weather forecast site using the weather API. you can search for a specific location and toggle displaying the data in fahrenheit or celsius.
 
 
 
